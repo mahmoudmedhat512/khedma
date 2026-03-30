@@ -2,6 +2,7 @@ import { useTheme } from '@/hooks/use-theme';
 import { Product } from '@/types';
 import * as Haptics from 'expo-haptics';
 import { Image } from 'expo-image';
+import { useRouter } from 'expo-router';
 import { Heart, Minus, Plus, X } from 'lucide-react-native';
 import React, { useState } from 'react';
 import {
@@ -35,6 +36,7 @@ export function ProductDetailModal({
 }: ProductDetailModalProps) {
     const colors = useTheme();
     const insets = useSafeAreaInsets();
+    const router = useRouter();
     const styles = getStyles(colors, insets);
     const [isFavorite, setIsFavorite] = useState(false);
 
@@ -104,6 +106,8 @@ export function ProductDetailModal({
                         onPress={() => {
                             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
                             onAdd();
+                            onClose();
+                            router.push('/cart');
                         }}
                     >
                         <Text style={styles.cartBtnText}>To cart</Text>

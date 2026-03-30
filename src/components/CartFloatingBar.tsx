@@ -52,7 +52,7 @@ export const CartFloatingBar = React.memo(CartFloatingBarComponent);
 const getStyles = (colors: any) => StyleSheet.create({
     container: {
         position: 'absolute' as const,
-        bottom: 90,
+        bottom: 30,
         left: 16,
         right: 16,
         backgroundColor: colors.textPrimary,
